@@ -22,6 +22,7 @@ import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.overlay.OverlayImage;
 
 public class MainMapFragment extends Fragment implements OnMapReadyCallback
@@ -128,7 +129,6 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
              }
          });
          marker[0].setMap(naverMap);
-         infoWindow[0].open(marker[0]);
 
          // 목원대학교 학생회관
          marker[1].setPosition(new LatLng(36.32807049116183, 127.33862195511007));
@@ -143,7 +143,34 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
              }
          });
          marker[1].setMap(naverMap);
-         infoWindow[1].open(marker[1]);
+
+         // 지도를 클릭하면 정보 창을 닫음
+         naverMap.setOnMapClickListener((coord, point) -> {
+             for (int i=0; i<max; i++)
+             {
+                 infoWindow[i].close();
+             }
+         });
+
+         marker[0].setOnClickListener(overlay -> {
+             for (int i=0; i<max; i++)
+             {
+                 infoWindow[i].close();
+             }
+             // 마커를 클릭할 때 정보창을 엶
+             infoWindow[0].open(marker[0]);
+             return true;
+         });
+
+         marker[1].setOnClickListener(overlay -> {
+             for (int i=0; i<max; i++)
+             {
+                 infoWindow[i].close();
+             }
+             // 마커를 클릭할 때 정보창을 엶
+             infoWindow[1].open(marker[1]);
+             return true;
+         });
      }
 
 }
