@@ -144,6 +144,40 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
          });
          marker[1].setMap(naverMap);
 
+         // 목원대학교 도서관
+         marker[2].setPosition(new LatLng(36.32507427860029, 127.338547739366));
+         marker[2].setIcon(OverlayImage.fromResource(R.drawable.marker_red));
+         infoWindow[2].setAdapter(new InfoWindow.DefaultTextAdapter(getActivity())
+         {
+             @NonNull
+             @Override
+             public CharSequence getText(@NonNull InfoWindow infoWindow)
+             {
+                 return "목원대학교 도서관";
+             }
+         });
+         marker[2].setMap(naverMap);
+
+         // 계룡황제 전용 주차장
+         marker[99].setPosition(new LatLng( 36.27455401852988, 127.2485525622957));
+         marker[99].setIcon(OverlayImage.fromResource(R.drawable.marker_red));
+         infoWindow[99].setAdapter(new InfoWindow.DefaultTextAdapter(getActivity())
+         {
+             @NonNull
+             @Override
+             public CharSequence getText(@NonNull InfoWindow infoWindow)
+             {
+                 return "계룡황제 전용 주차장";
+             }
+         });
+         marker[99].setMap(naverMap);
+
+         /*
+         
+         정보 처리하는 곳
+         
+          */
+         
          // 지도를 클릭하면 정보 창을 닫음
          naverMap.setOnMapClickListener((coord, point) -> {
              for (int i=0; i<max; i++)
@@ -169,6 +203,26 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
              }
              // 마커를 클릭할 때 정보창을 엶
              infoWindow[1].open(marker[1]);
+             return true;
+         });
+
+         marker[2].setOnClickListener(overlay -> {
+             for (int i=0; i<max; i++)
+             {
+                 infoWindow[i].close();
+             }
+             // 마커를 클릭할 때 정보창을 엶
+             infoWindow[2].open(marker[2]);
+             return true;
+         });
+
+         marker[99].setOnClickListener(overlay -> {
+             for (int i=0; i<max; i++)
+             {
+                 infoWindow[i].close();
+             }
+             // 마커를 클릭할 때 정보창을 엶
+             infoWindow[99].open(marker[99]);
              return true;
          });
      }
