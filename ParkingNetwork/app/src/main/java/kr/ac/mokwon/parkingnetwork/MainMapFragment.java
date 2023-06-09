@@ -57,6 +57,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
     {
         View view = inflater.inflate(R.layout.activity_map_fragment, container, false);
 
+
         // 지도 생성
         FragmentManager fm = getChildFragmentManager();
         MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.map);
@@ -67,6 +68,16 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         return view;
+    }
+
+    private void setMarker(Marker marker, double lat, double lng, int resID, int zIndex)
+    {
+        marker.setIconPerspectiveEnabled(true);
+        marker.setIcon(OverlayImage.fromResource(resID));
+        marker.setAlpha(0.8f);
+        marker.setPosition(new LatLng(lat, lng));
+        marker.setZIndex(zIndex);
+        marker.setMap(naverMap);
     }
 
     @Override
@@ -119,29 +130,11 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
          // 목원대학교 정문
          marker[0].setPosition(new LatLng(36.32883615298836, 127.33874220982563));
          marker[0].setIcon(OverlayImage.fromResource(R.drawable.marker_green));
-         infoWindow[0].setAdapter(new InfoWindow.DefaultTextAdapter(getActivity())
-         {
-             @NonNull
-             @Override
-             public CharSequence getText(@NonNull InfoWindow infoWindow)
-             {
-                 return "목원대학교 정문";
-             }
-         });
          marker[0].setMap(naverMap);
 
          // 목원대학교 학생회관
          marker[1].setPosition(new LatLng(36.32807049116183, 127.33862195511007));
          marker[1].setIcon(OverlayImage.fromResource(R.drawable.marker_orange));
-         infoWindow[1].setAdapter(new InfoWindow.DefaultTextAdapter(getActivity())
-         {
-             @NonNull
-             @Override
-             public CharSequence getText(@NonNull InfoWindow infoWindow)
-             {
-                 return "목원대학교 학생회관";
-             }
-         });
          marker[1].setMap(naverMap);
 
          // 목원대학교 도서관
@@ -173,11 +166,13 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
          marker[99].setMap(naverMap);
 
          /*
-         
+
          정보 처리하는 곳
-         
+
           */
-         
+
+         ViewGroup root = (ViewGroup) getView().findViewById(R.id.fragment);
+
          // 지도를 클릭하면 정보 창을 닫음
          naverMap.setOnMapClickListener((coord, point) -> {
              for (int i=0; i<max; i++)
@@ -191,6 +186,10 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
              {
                  infoWindow[i].close();
              }
+
+             PointInformationAdapter adapter = new PointInformationAdapter(getActivity().getApplicationContext(), root, "목원대학교 정문", "대전 서구 도안북로 88", 95);
+             infoWindow[0].setAdapter(adapter);
+
              // 마커를 클릭할 때 정보창을 엶
              infoWindow[0].open(marker[0]);
              return true;
@@ -202,7 +201,11 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
                  infoWindow[i].close();
              }
              // 마커를 클릭할 때 정보창을 엶
+             PointInformationAdapter adapter = new PointInformationAdapter(getActivity().getApplicationContext(), root, "목원대학교 학생회관", "대전 서구 도안북로 88", 48);
+             infoWindow[1].setAdapter(adapter);
+
              infoWindow[1].open(marker[1]);
+
              return true;
          });
 
@@ -213,6 +216,11 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
              }
              // 마커를 클릭할 때 정보창을 엶
              infoWindow[2].open(marker[2]);
+             PointInformationAdapter adapter = new PointInformationAdapter(getActivity().getApplicationContext(), root, "목원대학교 도서관", "대전 서구 도안북로 88", 3);
+             infoWindow[2].setAdapter(adapter);
+
+             infoWindow[2].open(marker[2]);
+
              return true;
          });
 
@@ -222,7 +230,11 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback
                  infoWindow[i].close();
              }
              // 마커를 클릭할 때 정보창을 엶
+             PointInformationAdapter adapter = new PointInformationAdapter(getActivity().getApplicationContext(), root, "계룡시청", "충남 계룡시 장안로 46 계룡시청", 1);
+             infoWindow[99].setAdapter(adapter);
+
              infoWindow[99].open(marker[99]);
+
              return true;
          });
      }

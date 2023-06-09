@@ -58,16 +58,8 @@ public class BookMarkerFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.activity_book_marker_fragment, container, false);
 
-        recyclerView = view.findViewById(R.id.recycler);
-        list = new ArrayList<>();
-        adapter = new AdapterRecyclerBookMarker(list);
 
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), RecyclerView.VERTICAL, false));
 
-        list.add(0, new itemBookMarker("계룡시청", "금암구"));
-
-        adapter.notifyDataSetChanged();
         return view;
     }
 }

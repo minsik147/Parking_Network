@@ -24,7 +24,7 @@ public class AdapterRecyclerBookMarker extends RecyclerView.Adapter<AdapterRecyc
 
     @NonNull
     @Override
-    public AdapterRecyclerBookMarker.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
