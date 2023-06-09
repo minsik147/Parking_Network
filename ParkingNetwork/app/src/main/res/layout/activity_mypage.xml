@@ -1,9 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MypageActivity">
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:backgroundTint="#3F51B5"
+            android:id="@+id/plzlogin"
+            android:textSize="23dp"
+            android:text="로그인해주세요"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/advertisement" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:gravity=""
+            android:textStyle="bold"
+            android:text="고객센터">
+        </TextView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:gravity=""
+            android:id="@+id/question"
+            android:text="자주 하는 질문"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="#00ff0000"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:gravity=""
+            android:id="@+id/enquiry"
+            android:text="1:1 문의"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="#00ff0000"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:gravity=""
+            android:id="@+id/guide"
+            android:text="파크앤 안내"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="#00ff0000"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:gravity=""
+            android:id="@+id/terms"
+            android:text="약관 안내"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="#00ff0000"
+            />
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
